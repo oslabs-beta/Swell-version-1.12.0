@@ -45,7 +45,7 @@ const newRequestFieldsSlice = createSlice({
       state.testContent = action.payload;
     },
 
-    newRequestProtocolSelected: (state, action: PayloadAction<string>) => {
+    newRequestProtocolSelect: (state, action: PayloadAction<string>) => {
       switch (action.payload) {
         /**
          * @TODO add tRPC state management
@@ -125,7 +125,7 @@ const newRequestFieldsSlice = createSlice({
   },
 });
 
-export const { fieldsReplaced, newTestContentSet, newRequestProtocolSelected } =
+export const { fieldsReplaced, newTestContentSet, newRequestProtocolSelect } =
   newRequestFieldsSlice.actions;
 export default newRequestFieldsSlice.reducer;
 
