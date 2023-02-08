@@ -98,8 +98,8 @@ const newRequestSlice = createSlice({
       return initialState;
     },
 
-    // this reducer should only be invoked in conjunction with the protocol select in the new request fields slice
-    newRequestByProtocol: (state, action: PayloadAction<string>) => {
+    // this reducer should only be invoked in conjunction with the newRequestFieldsByProtocol reducer
+    newRequestContentByProtocol: (state, action: PayloadAction<string>) => {
       switch (action.payload) {
         case 'tRPC': {
           return {
@@ -178,7 +178,7 @@ export const {
   newRequestSSESet,
   newRequestStreamsSet,
   composerFieldsReset,
-  newRequestByProtocol
+  newRequestContentByProtocol
 } = newRequestSlice.actions;
 export default newRequestSlice.reducer;
 
