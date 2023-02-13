@@ -61,8 +61,6 @@ export default function TRPCComposer(props: $TSFixMe) {
   const requestHeaders = useSelector((state: RootState) => state.newRequest.newRequestHeaders)
   const requestFields = useSelector((state: RootState) => state.newRequestFields)
 
-  const [display, setDisplay] = useState('');
-
 
   // REMOVE
   const requestStuff = useSelector((state: RootState) => state.newRequest)
@@ -98,9 +96,9 @@ export default function TRPCComposer(props: $TSFixMe) {
     console.log(request);
     // const displayRes = eval(request).then((res: object) => JSON.stringify(res))
     //   .then((res:any) => setDisplay(res));
-    eval(request)
-      .then((res: object) => JSON.stringify(res))
-      .then((res:any) => {
+    const reqArray = request.split("\n");
+
+    Promise.all(reqArray.map(el => eval(el))).then((res: any) => {
         const newCurrentResponse: any = {
           checkSelected: false,
           checked: false,
@@ -122,12 +120,15 @@ export default function TRPCComposer(props: $TSFixMe) {
           url: clientURL,
           webrtc: false,
           response: {
-            events: [JSON.parse(res)],
+            events: [res],
           }
         };
         dispatch(responseDataSaved(newCurrentResponse));
       });
 
+    
+    // Promise.all(reqArray.map(el => eval(el))).then((res: any)=> setDisplay(res));
+  
     //STEP 3: Update info in req res and dispatch new req, res to store
     // dispatch(reqResUpdated); // how long did it take?
 
@@ -202,9 +203,6 @@ export default function TRPCComposer(props: $TSFixMe) {
       </div>
       <div className="is-3rem-footer is-clickable is-margin-top-auto">
         <SendRequestButton onClick={sendRequest} />
-      </div>
-      <div className="displayRes">
-        {display}
       </div>
     </Box>
   );
