@@ -148,15 +148,17 @@ const newRequestSlice = createSlice({
           return {
             ...initialState,
             bodyType: 'stun-ice',
-            bodyContent: {
-              iceConfiguration: {
-                iceServers: [
-                  {
-                    urls: 'stun:stun1.l.google.com:19302',
-                  },
-                ],
+            newRequestBody: {
+              bodyContent: {
+                iceConfiguration: {
+                  iceServers: [
+                    {
+                      urls: 'stun:stun1.l.google.com:19302',
+                    },
+                  ],
+                },
               },
-            },
+            }
           };
         }
         case 'webhook': {
