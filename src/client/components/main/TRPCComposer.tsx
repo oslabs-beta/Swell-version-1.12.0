@@ -83,7 +83,17 @@ export default function TRPCComposer(props: $TSFixMe) {
     // console.log(JSON.stringify(eval(request)));
     // safeEval(request).then((res: object) => console.log(JSON.stringify(res)));
     
-
+    // function parseStringToJSON(str) {
+    //   try {
+    //     // Add quotes around the property names
+    //     str = str.replace(/([a-zA-Z0-9]+):/g, '"$1":');
+    //     const obj = JSON.parse(str);
+    //     return JSON.stringify(obj, null, 2);
+    //   } catch (error) {
+    //     return "Invalid JSON string";
+    //   }
+    // }
+    
     // STEP 2: send request
     console.log(request);
     // const displayRes = eval(request).then((res: object) => JSON.stringify(res))
