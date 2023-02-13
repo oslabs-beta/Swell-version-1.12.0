@@ -31,7 +31,7 @@ import { $TSFixMe } from '../../../types';
 import { RootState } from '../../toolkit-refactor/store';
 
 // import tRPC client Module
-import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
+// import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 
 /**@todo remov */
 import safeEval from 'safe-eval';

@@ -144,6 +144,7 @@ const newRequestSlice = createSlice({
           };
         }
         case 'webrtc': {
+          console.log("webrtc reducer")
           return {
             ...initialState,
             bodyType: 'stun-ice',
