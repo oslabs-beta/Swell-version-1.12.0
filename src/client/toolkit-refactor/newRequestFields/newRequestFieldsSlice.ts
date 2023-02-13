@@ -5,7 +5,6 @@ import { NewRequestFields } from '../../../types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { composerFieldsReset } from '../newRequest/newRequestSlice';
 import { StateEffect } from '@uiw/react-codemirror';
-import { StateEffect } from '@uiw/react-codemirror';
 
 const initialState: NewRequestFields = {
   protocol: '',
