@@ -58,7 +58,7 @@ export default function TRPCComposer(props: $TSFixMe) {
   const requestHeaders = useSelector((state: RootState) => state.newRequest.newRequestHeaders)
   const requestFields = useSelector((state: RootState) => state.newRequestFields)
 
-  const [display, setDisplay] = useState('');
+  const [display, setDisplay] = useState([Object]);
 
 
   const sendRequest = () => {
@@ -79,9 +79,9 @@ export default function TRPCComposer(props: $TSFixMe) {
     
 
     // STEP 2: send request
-    console.log(request);
-    const displayRes = eval(request).then((res: object) => JSON.stringify(res))
-      .then((res:any) => setDisplay(res));
+    const reqArray = request.split("\n");
+    Promise.all(reqArray.map(el => eval(el))).then((res: any)=> setDisplay(res));
+  
     //STEP 3: Update info in req res and dispatch new req, res to store
     // dispatch(reqResUpdated); // how long did it take?
 
@@ -158,7 +158,7 @@ export default function TRPCComposer(props: $TSFixMe) {
         <SendRequestButton onClick={sendRequest} />
       </div>
       <div className="displayRes">
-        {display}
+        {display.map((el: any, i: number) => <p key={i}>{JSON.stringify(el)}</p>)}
       </div>
     </Box>
   );
