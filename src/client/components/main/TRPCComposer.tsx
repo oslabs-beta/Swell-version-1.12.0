@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { v4 as uuid } from 'uuid';
 // Import controllers
@@ -18,6 +18,7 @@ import TestEntryForm from './new-request/TestEntryForm.jsx';
 
 // Import Redux
 import { useSelector, useDispatch } from 'react-redux';
+
 import {
   newRequestHeadersSet,
   newRequestBodySet,
@@ -25,16 +26,28 @@ import {
   composerFieldsReset,
 } from '../../toolkit-refactor/newRequest/newRequestSlice';
 
+
+import {
+  reqResReplaced,
+  reqResCleared,
+  reqResItemAdded,
+  reqResItemDeleted,
+  reqResUpdated,
+  responseDataSaved,
+} from '../../toolkit-refactor/reqRes/reqResSlice'
+
 // Import MUI components
 import { Box } from '@mui/material';
 import { $TSFixMe } from '../../../types';
 import { RootState } from '../../toolkit-refactor/store';
 
 // import tRPC client Module
-// import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
+import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
+import { AnyAction } from 'redux';
+import { bool } from 'prop-types';
 
 /**@todo remov */
-import safeEval from 'safe-eval';
+//import safeEval from 'safe-eval';
 
 // Translated from GraphQLContainer.jsx
 export default function TRPCComposer(props: $TSFixMe) {
@@ -49,15 +62,13 @@ export default function TRPCComposer(props: $TSFixMe) {
   const requestFields = useSelector((state: RootState) => state.newRequestFields)
 
 
+  // REMOVE
+  const requestStuff = useSelector((state: RootState) => state.newRequest)
 
   const sendRequest = () => {
-    // Import trpc/client import { createTRPCProxyClient, httpBatchLink } from "@trpc/client"
-    // Import safe eval
 
-    // url - useSelector(state.newRequestFields.url)
-    // hardcode the url
-    const clientURL = 'https://localhost:3001/trpc';
-
+    const clientURL: string = requestFields.url; //grabbing url from
+    console.log(clientURL)
     const client = createTRPCProxyClient({
       links: [
         httpBatchLink({
@@ -66,13 +77,85 @@ export default function TRPCComposer(props: $TSFixMe) {
       ],
     })
     // actual query - useSelector(state.newRequest.newRequestBody)
-    console.log("logging req body pre request", requestBody);
     const request = requestBody.bodyContent
-    console.log(JSON.stringify(eval(request)));
+    // console.log(JSON.stringify(eval(request)));
     // safeEval(request).then((res: object) => console.log(JSON.stringify(res)));
+
+    // function parseStringToJSON(str) {
+    //   try {
+    //     // Add quotes around the property names
+    //     str = str.replace(/([a-zA-Z0-9]+):/g, '"$1":');
+    //     const obj = JSON.parse(str);
+    //     return JSON.stringify(obj, null, 2);
+    //   } catch (error) {
+    //     return "Invalid JSON string";
+    //   }
+    // }
+
+    // STEP 2: send request
+    console.log(request);
+    // const displayRes = eval(request).then((res: object) => JSON.stringify(res))
+    //   .then((res:any) => setDisplay(res));
+    const reqArray = request.split("\n");
+
+    Promise.all(reqArray.map(el => eval(el))).then((res: any) => {
+        const newCurrentResponse: any = {
+          checkSelected: false,
+          checked: false,
+          connection: "closed",
+          connectionType: "plain",
+          createdAt: new Date(),
+          gRPC: false,
+          graphQL: false,
+          host: "http://localhost:3000",
+          id: "2702218b-854d-4530-a480-9efa5af2c821",
+          minimized: false,
+          path: "/",
+          protoPath: undefined,
+          protocol: "http://",
+          request: {...requestStuff},
+          tab: undefined,
+          timeReceived: 1676146914257,
+          timeSent: 1676146914244,
+          url: clientURL,
+          webrtc: false,
+          response: {
+            events: [res],
+          }
+        };
+        dispatch(responseDataSaved(newCurrentResponse));
+      });
+
+
+    // Promise.all(reqArray.map(el => eval(el))).then((res: any)=> setDisplay(res));
+
+    //STEP 3: Update info in req res and dispatch new req, res to store
+    // dispatch(reqResUpdated); // how long did it take?
+
+    //STEP 4: figure out how to get response to display if it isnt
+
+    // eval(request);
     // send request
     // worry about connecting to store and sending both the request and response to the store
+    // client.users.byId.query('1')
 
+    // In the SingleReqResContainer
+    // responseSent() => {
+    //   // check the request type
+    //   // if it's http, dispatch set active tab to "event" for reqResResponse
+    //   // otherwise do nothing
+    //   if (connectionType !== 'WebSocket') {
+    //     dispatch(setResponsePaneActiveTab('events'));
+    //   }
+    //   // console.log(content)
+    //   connectionController.openReqRes(content.id);
+    //   dispatch(
+    //     responseDataSaved(
+    //       content,
+    //       'singleReqResContainercomponentSendHandler'
+    //     )
+    //   // ); //dispatch will fire first before the callback of [ipcMain.on('open-ws'] is fired. check async and callback queue concepts
+    // }}
   };
 
 
@@ -80,7 +163,7 @@ export default function TRPCComposer(props: $TSFixMe) {
     <Box
       className="is-flex-grow-3 add-vertical-scroll"
       sx={{
-        height: '40%',
+        height: '100%',
         px: 1,
         overflowX: 'scroll',
         overflowY: 'scroll',
@@ -93,7 +176,7 @@ export default function TRPCComposer(props: $TSFixMe) {
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         // tabIndex={0}
       >
-        {/* <TRPCMethodAndEndpointEntryForm
+        <TRPCMethodAndEndpointEntryForm
           requestFields={requestFields}
           requestHeaders={requestHeaders}
           newRequestHeadersSet={newRequestHeadersSet}
@@ -101,7 +184,7 @@ export default function TRPCComposer(props: $TSFixMe) {
           newRequestBodySet={newRequestBodySet}
           warningMessage={warningMessage}
           setWarningMessage={setWarningMessage}
-        /> */}
+        />
         {/* <HeaderEntryForm
           RequestFields={requestFields}
           newRequestHeadersSet={newRequestHeadersSet}
@@ -112,7 +195,7 @@ export default function TRPCComposer(props: $TSFixMe) {
           newRequestBody={newRequestBody}
           newRequestCookiesSet={newRequestCookiesSet}
         /> */}
-        <TRPCBodyEntryForm/>
+        <TRPCBodyEntryForm newRequestBodySet={newRequestBodySet}/>
         {/* <TRPCVariableEntryForm
           newRequestBody={newRequestBody}
           newRequestBodySet={newRequestBodySet}
