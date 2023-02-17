@@ -42,12 +42,15 @@ import { $TSFixMe } from '../../../types';
 import { RootState } from '../../toolkit-refactor/store';
 
 // import tRPC client Module
-import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
+import { createTRPCProxyClient, httpBatchLink, createWSClient, wsLink, splitLink } from "@trpc/client";
 import { AnyAction } from 'redux';
 import { bool } from 'prop-types';
 
 /**@todo remov */
 //import safeEval from 'safe-eval';
+
+// import ws from 'ws';
+// import fetch from 'node-fetch';
 
 // Translated from GraphQLContainer.jsx
 export default function TRPCComposer(props: $TSFixMe) {
@@ -65,17 +68,28 @@ export default function TRPCComposer(props: $TSFixMe) {
   // REMOVE
   const requestStuff = useSelector((state: RootState) => state.newRequest)
 
+  
+
   const sendRequest = () => {
+
+    // polyfill fetch & websocket
+    // const globalAny = global as any;
+    // globalAny.fetch = fetch;
+    // globalAny.WebSocket = ws;
 
     const clientURL: string = requestFields.url; //grabbing url from
     console.log(clientURL)
+    const wsClient = createWSClient({ 
+      url: clientURL 
+    })
     const client = createTRPCProxyClient({
       links: [
-        httpBatchLink({
-          url: clientURL, // this would be the url from user eg: http://localhost:3000/trpc  (assuming it is listening)
+        wsLink({
+          client: wsClient, // this would be the url from user eg: http://localhost:3000/trpc  (assuming it is listening)
         }),
       ],
     })
+    
     // actual query - useSelector(state.newRequest.newRequestBody)
     const request = requestBody.bodyContent
     // console.log(JSON.stringify(eval(request)));
@@ -94,39 +108,38 @@ export default function TRPCComposer(props: $TSFixMe) {
 
     // STEP 2: send request
     console.log(request);
-    // const displayRes = eval(request).then((res: object) => JSON.stringify(res))
-    //   .then((res:any) => setDisplay(res));
-    const reqArray = request.split("\n");
-
-    Promise.all(reqArray.map(el => eval(el))).then((res: any) => {
-        const newCurrentResponse: any = {
-          checkSelected: false,
-          checked: false,
-          connection: "closed",
-          connectionType: "plain",
-          createdAt: new Date(),
-          gRPC: false,
-          graphQL: false,
-          host: "http://localhost:3000",
-          id: "2702218b-854d-4530-a480-9efa5af2c821",
-          minimized: false,
-          path: "/",
-          protoPath: undefined,
-          protocol: "http://",
-          request: {...requestStuff},
-          tab: undefined,
-          timeReceived: 1676146914257,
-          timeSent: 1676146914244,
-          url: clientURL,
-          webrtc: false,
-          response: {
-            events: [res],
-          }
-        };
-        dispatch(responseDataSaved(newCurrentResponse));
-      });
-
-
+    eval(request)
+      // .then((res: object) => JSON.stringify(res))
+      // .then((res:any) => console.log(res));
+    // const reqArray = request.split("\n");
+    // Promise.all(reqArray.map(el => eval(el))).then((res: any) => {
+    //     const newCurrentResponse: any = {
+    //       checkSelected: false,
+    //       checked: false,
+    //       connection: "closed",
+    //       connectionType: "plain",
+    //       createdAt: new Date(),
+    //       gRPC: false,
+    //       graphQL: false,
+    //       host: "http://localhost:3000",
+    //       id: "2702218b-854d-4530-a480-9efa5af2c821",
+    //       minimized: false,
+    //       path: "/",
+    //       protoPath: undefined,
+    //       protocol: "http://",
+    //       request: {...requestStuff},
+    //       tab: undefined,
+    //       timeReceived: 1676146914257,
+    //       timeSent: 1676146914244,
+    //       url: clientURL,
+    //       webrtc: false,
+    //       response: {
+    //         events: [res],
+    //       }
+    //     };
+    //     dispatch(responseDataSaved(newCurrentResponse));
+    //   });
+      
     // Promise.all(reqArray.map(el => eval(el))).then((res: any)=> setDisplay(res));
 
     //STEP 3: Update info in req res and dispatch new req, res to store
