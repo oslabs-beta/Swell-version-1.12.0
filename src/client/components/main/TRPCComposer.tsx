@@ -74,16 +74,31 @@ export default function TRPCComposer(props: $TSFixMe) {
     // }
     //http://localhost:3000/trpc/querybyId
     //client.path.query(body)
-
+    const links = [];
     const clientURL: string = requestFields.url; //grabbing url from
+    const httpRegex = /^http:\/\/[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(:[0-9]+)?(\/.*)?$/ // trpc doesn't accept https requests to my knowledge otherwise https?
+    const wsRegex = /^(ws|wss):\/\/(([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|localhost)(:[0-9]+)?(\/.*)?$/;
+    if (wsRegex.test(clientURL)) {
+      // setup links array with ws
+
+      const wsClient = createWSClient({ url: clientURL })
+      links.push(
+        wsLink({
+          client: wsClient, // this would be the url from user eg: http://localhost:3000/trpc  (assuming it is listening)
+        }))
+    } else if (httpRegex.test(clientURL)) {
+      // setup links array with http
+      links.push(
+        httpBatchLink({
+          url: clientURL, // this would be the url from user eg: http://localhost:3000/trpc  (assuming it is listening)
+        }))
+    } else {
+      console.log("error message")
+    }
 
     console.log(clientURL)
     const client = createTRPCProxyClient({
-      links: [
-        httpBatchLink({
-          url: clientURL, // this would be the url from user eg: http://localhost:3000/trpc  (assuming it is listening)
-        }),
-      ],
+      links: links
     })
     // actual query - useSelector(state.newRequest.newRequestBody)
     const request = requestBody.bodyContent
