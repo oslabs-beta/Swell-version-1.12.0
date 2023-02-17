@@ -45,6 +45,7 @@ import { RootState } from '../../toolkit-refactor/store';
 import { createTRPCProxyClient, httpBatchLink, createWSClient, wsLink, splitLink } from "@trpc/client";
 import { AnyAction } from 'redux';
 import { bool } from 'prop-types';
+import EventsContainer from './response/EventsContainer';
 
 /**@todo remov */
 //import safeEval from 'safe-eval';
@@ -109,36 +110,65 @@ export default function TRPCComposer(props: $TSFixMe) {
     // STEP 2: send request
     console.log(request);
     eval(request)
-      // .then((res: object) => JSON.stringify(res))
-      // .then((res:any) => console.log(res));
+      .then((res: object) => JSON.stringify(res))
+      .then((res:any) => {
+        const newCurrentResponse: any = {
+              checkSelected: false,
+              checked: false,
+              connection: "closed",
+              connectionType: "plain",
+              createdAt: new Date(),
+              gRPC: false,
+              graphQL: false,
+              host: "http://localhost:3000",
+              id: "2702218b-854d-4530-a480-9efa5af2c821",
+              minimized: false,
+              path: "/",
+              protoPath: undefined,
+              protocol: "http://",
+              request: {...requestStuff},
+              tab: undefined,
+              timeReceived: 1676146914257,
+              timeSent: 1676146914244,
+              url: clientURL,
+              webrtc: false,
+              response: {
+                events: [],
+              }
+            };
+            // newCurrentResponse.events.push(res);
+            console.log(res);
+            newCurrentResponse.response.events.push(res);
+            dispatch(responseDataSaved(newCurrentResponse));
+      });
     // const reqArray = request.split("\n");
-    // Promise.all(reqArray.map(el => eval(el))).then((res: any) => {
-    //     const newCurrentResponse: any = {
-    //       checkSelected: false,
-    //       checked: false,
-    //       connection: "closed",
-    //       connectionType: "plain",
-    //       createdAt: new Date(),
-    //       gRPC: false,
-    //       graphQL: false,
-    //       host: "http://localhost:3000",
-    //       id: "2702218b-854d-4530-a480-9efa5af2c821",
-    //       minimized: false,
-    //       path: "/",
-    //       protoPath: undefined,
-    //       protocol: "http://",
-    //       request: {...requestStuff},
-    //       tab: undefined,
-    //       timeReceived: 1676146914257,
-    //       timeSent: 1676146914244,
-    //       url: clientURL,
-    //       webrtc: false,
-    //       response: {
-    //         events: [res],
-    //       }
-    //     };
-    //     dispatch(responseDataSaved(newCurrentResponse));
-    //   });
+      // eval(request).then((res: any) => {
+      //   const newCurrentResponse: any = {
+      //     checkSelected: false,
+      //     checked: false,
+      //     connection: "closed",
+      //     connectionType: "plain",
+      //     createdAt: new Date(),
+      //     gRPC: false,
+      //     graphQL: false,
+      //     host: "http://localhost:3000",
+      //     id: "2702218b-854d-4530-a480-9efa5af2c821",
+      //     minimized: false,
+      //     path: "/",
+      //     protoPath: undefined,
+      //     protocol: "http://",
+      //     request: {...requestStuff},
+      //     tab: undefined,
+      //     timeReceived: 1676146914257,
+      //     timeSent: 1676146914244,
+      //     url: clientURL,
+      //     webrtc: false,
+      //     response: {
+      //       events: [res],
+      //     }
+      //   };
+      //   dispatch(responseDataSaved(newCurrentResponse));
+      // });
       
     // Promise.all(reqArray.map(el => eval(el))).then((res: any)=> setDisplay(res));
 
