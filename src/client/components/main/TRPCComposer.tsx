@@ -127,7 +127,7 @@ export default function TRPCComposer(props: $TSFixMe) {
           createdAt: new Date(),
           gRPC: false,
           graphQL: false,
-          host: "http://localhost:3000",
+          host: requestFields.url,
           id: uuid(),
           minimized: false,
           path: "/",
