@@ -52,23 +52,6 @@ const TRPCMethodAndEndpointEntryForm = () => {
     }));
   };
 
-  // const methodChangeHandler = (selectedMethod: string) => {
-  //   // GraphQL group had this method change handler modify the body of the query
-  //   dispatch(fieldsReplaced({
-  //     ...requestFields,
-  //     method: selectedMethod,
-  //     protocol: selectedMethod === 'SUBSCRIPTION' ? 'ws://' : '',
-  //   }));
-  // };
-
-  // const methodChangeHandler = (selectedMethod: string) => {
-  //   // GraphQL group had this method change handler modify the body of the query
-  //   dispatch(fieldsReplaced({
-  //     ...requestFields,
-  //     method: selectedMethod,
-  //   }));
-  // };
-
   const isDark = useSelector((store: RootState) => store.ui.isDark);
 
   return (
@@ -106,7 +89,6 @@ const TRPCMethodAndEndpointEntryForm = () => {
               <a
                 onClick={(e) => {
                   setDropdownIsActive(false);
-                  //methodChangeHandler('QUERY');
                   populateUrl('QUERY')
                   
                 }}
@@ -119,7 +101,6 @@ const TRPCMethodAndEndpointEntryForm = () => {
               <a
                 onClick={(e) => {
                   setDropdownIsActive(false);
-                  // methodChangeHandler('MUTATE');
                   populateUrl('MUTATE')
                 }}
                 className="dropdown-item"
@@ -131,7 +112,6 @@ const TRPCMethodAndEndpointEntryForm = () => {
               <a
                 onClick={(e) => {
                   setDropdownIsActive(false);
-                  //methodChangeHandler('SUBSCRIPTION');
                   populateUrl('SUBSCRIPTION')
                 }}
                 className="dropdown-item"
