@@ -5,8 +5,9 @@ import SendRequestButton from './new-request/SendRequestButton';
 // Import local components
 import TRPCMethodAndEndpointEntryForm from './tRPC/TRPCMethodAndEndpointEntryForm';
 import TRPCBodyEntryForm from './tRPC/TRPCBodyEntryForm';
-// Import Redux
+// Import Redux hooks
 import { useSelector, useDispatch } from 'react-redux';
+// Import Actions from RTK slice
 import {
   newRequestHeadersSet,
   newRequestBodySet,
@@ -23,17 +24,18 @@ import { RootState } from '../../toolkit-refactor/store';
 import { createTRPCProxyClient, httpBatchLink, createWSClient, wsLink, splitLink } from "@trpc/client";
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
-
-export default function TRPCComposer(props: $TSFixMe) {
-  const {
-    setWarningMessage,
-    warningMessage,
-    setWorkspaceActiveTab,
-  } = props;
+/**
+ * 
+ */
+export default function TRPCComposer() {
   const dispatch = useDispatch();
+  /** newRequestBody slice from redux store, contains specific request info */
   const requestBody = useSelector((state: RootState) => state.newRequest.newRequestBody)
-  const requestHeaders = useSelector((state: RootState) => state.newRequest.newRequestHeaders)
+
+  /** newRequestFields slice from redux store, contains general request info*/
   const requestFields = useSelector((state: RootState) => state.newRequestFields)
+
+  /** reqRes slice from redux store, contains request and response data */
   const requestStuff = useSelector((state: RootState) => state.newRequest)
 
   let subscription: any;
@@ -42,7 +44,7 @@ export default function TRPCComposer(props: $TSFixMe) {
 
     let isWebsocket = false;
     const links = [];
-    const clientURL: string = requestFields.url; //grabbing url from
+    const clientURL: string = requestFields.url; //grabbing url 
     const request = requestBody.bodyContent;
     const httpRegex = /^http:\/\/([a-zA-Z0-9-]+\.[a-zA-Z]{2,}|localhost)(:[0-9]+)?(\/.*)?$/ // trpc doesn't accept https requests to my knowledge otherwise https?
     const wsRegex = /^(ws|wss):\/\/(([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|localhost)(:[0-9]+)?(\/.*)?$/;
@@ -56,8 +58,6 @@ export default function TRPCComposer(props: $TSFixMe) {
       //instantiates a WebSocket
       const wsClient = createWSClient({ url: clientURL })
       links.push(wsLink({ client: wsClient }))
-
-      const client = createTRPCProxyClient({ links: links })
 
       //grabs the WebSocket from tRPC's wsClient
       const ws = wsClient.getConnection();
@@ -75,12 +75,12 @@ export default function TRPCComposer(props: $TSFixMe) {
             createdAt: new Date(),
             gRPC: false,
             graphQL: false,
-            host: "http://localhost:3000",
-            id: "2702218b-854d-4530-a480-9efa5af2c821",
+            host: clientURL,
+            id: uuid(),
             minimized: false,
             path: "/",
             protoPath: undefined,
-            protocol: "http://",
+            protocol: "ws://",
             request: {...requestStuff},
             tab: undefined,
             timeReceived: 1676146914257,
@@ -170,15 +170,7 @@ export default function TRPCComposer(props: $TSFixMe) {
         className="is-flex-grow-3 add-vertical-scroll"
         style={{ overflowX: 'hidden' }}
       >
-        <TRPCMethodAndEndpointEntryForm
-          requestFields={requestFields}
-          requestHeaders={requestHeaders}
-          newRequestHeadersSet={newRequestHeadersSet}
-          newRequestCookiesSet={newRequestCookiesSet}
-          newRequestBodySet={newRequestBodySet}
-          warningMessage={warningMessage}
-          setWarningMessage={setWarningMessage}
-        />
+        <TRPCMethodAndEndpointEntryForm/>
         <TRPCBodyEntryForm newRequestBodySet={newRequestBodySet}/>
       </div>
       <div className="is-3rem-footer is-clickable is-margin-top-auto" style={{display: 'flex', justifyContent: 'space-around'}}>
