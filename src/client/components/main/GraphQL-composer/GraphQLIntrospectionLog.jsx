@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import graphQLController from '../../../controllers/graphQLController';
-import TextCodeArea from './TextCodeArea';
+import TextCodeArea from '../new-request/TextCodeArea.tsx';
 
 const GraphQLIntrospectionLog = () => {
   const headers = useSelector(

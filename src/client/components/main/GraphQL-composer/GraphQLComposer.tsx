@@ -10,9 +10,9 @@ import historyController from '../../../controllers/historyController';
  * "components" folder
  */
 import HeaderEntryForm from '../new-request/HeaderEntryForm.jsx';
-import GraphQLMethodAndEndpointEntryForm from './GraphQLMethodAndEndpointEntryForm';
-import CookieEntryForm from '../new-request/CookieEntryForm';
-import GraphQLBodyEntryForm from './GraphQLBodyEntryForm';
+import GraphQLMethodAndEndpointEntryForm from './GraphQLMethodAndEndpointEntryForm.jsx';
+import CookieEntryForm from '../new-request/CookieEntryForm.jsx';
+import GraphQLBodyEntryForm from './GraphQLBodyEntryForm.jsx';
 import GraphQLVariableEntryForm from './GraphQLVariableEntryForm';
 import GraphQLIntrospectionLog from './GraphQLIntrospectionLog.jsx';
 import NewRequestButton from '../new-request/NewRequestButton.jsx';
