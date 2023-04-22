@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-import openapiParserFunc from '../main_process/openapiParser';
+import openapiParserFunc from '../../main_process/openapiParser';
 
 /** @todo Test the actual contents of the parser */
 describe('openAPI Parser tests', () => {

@@ -1,4 +1,4 @@
-import ReqResCtrl from '../src/client/controllers/reqResController';
+import ReqResCtrl from '../../src/client/controllers/reqResController';
 
 /**
  * @todo Integration tests with the actual API. The controller calls api.send
