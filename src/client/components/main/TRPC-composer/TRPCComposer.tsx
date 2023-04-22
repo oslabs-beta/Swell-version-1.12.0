@@ -8,7 +8,7 @@ import TRPCBodyEntryForm from './TRPCBodyEntryForm';
 // Import Redux hooks
 import { useSelector, useDispatch } from 'react-redux';
 // Import Actions from RTK slice
-import { newRequestBodySet } from '../../../toolkit-refactor/newRequest/newRequestSlice';
+import { newRequestBodySet } from '../../../toolkit-refactor/slices/newRequestSlice';
 import { responseDataSaved } from '../../../toolkit-refactor/reqRes/reqResSlice';
 
 // Import MUI components

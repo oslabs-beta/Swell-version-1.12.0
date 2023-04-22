@@ -6,7 +6,7 @@ import { responseDataSaved } from '../../../toolkit-refactor/reqRes/reqResSlice'
 import {
   setResponsePaneActiveTab,
   setSidebarActiveTab,
-} from '../../../toolkit-refactor/ui/uiSlice';
+} from '../../../toolkit-refactor/slices/uiSlice';
 
 // Import controllers
 import connectionController from '../../../controllers/reqResController';

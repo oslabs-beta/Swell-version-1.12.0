@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   startServer,
   stopServer,
-} from '../../../toolkit-refactor/mockServer/mockServerSlice';
-import { newRequestFieldsByProtocol } from '../../../toolkit-refactor/newRequestFields/newRequestFieldsSlice';
+} from '../../../toolkit-refactor/slices/mockServerSlice';
+import { newRequestFieldsByProtocol } from '../../../toolkit-refactor/slices/newRequestFieldsSlice';
 
 // forms
 import RestMethodAndEndpointEntryForm from '../http2-composer/RestMethodAndEndpointEntryForm';

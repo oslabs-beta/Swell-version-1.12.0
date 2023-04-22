@@ -12,18 +12,18 @@ import GRPCRequestContent from '../../components/legacy-components/display/GRPCR
 import OpenAPIRequestContent from '../../components/legacy-components/display/OpenAPIRequestContent';
 
 import { responseDataSaved } from './reqResSlice';
-import { fieldsReplaced } from '../newRequestFields/newRequestFieldsSlice';
+import { fieldsReplaced } from '../slices/newRequestFieldsSlice';
 import {
   newRequestSSESet,
   newRequestCookiesSet,
   newRequestStreamsSet,
   newRequestBodySet,
   newRequestHeadersSet,
-} from '../newRequest/newRequestSlice';
+} from '../slices/newRequestSlice';
 import {
   setResponsePaneActiveTab,
   setSidebarActiveTab,
-} from '../ui/uiSlice';
+} from '../slices/uiSlice';
 
 import { useAppDispatch } from '../store';
 

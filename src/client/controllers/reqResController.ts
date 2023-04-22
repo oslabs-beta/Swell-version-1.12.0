@@ -11,7 +11,7 @@ import {
   groupCleared,
   graphCleared,
   graphUpdated,
-} from '../toolkit-refactor/graphPoints/graphPointsSlice';
+} from '../toolkit-refactor/slices/graphPointsSlice';
 
 import graphQLController from './graphQLController';
 import { ReqRes, WindowExt } from '../../types';

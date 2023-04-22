@@ -10,7 +10,7 @@
  */
 import { NewRequestFields } from '../../../types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { composerFieldsReset } from '../newRequest/newRequestSlice';
+import { composerFieldsReset } from './newRequestSlice';
 
 const initialState: NewRequestFields = {
   protocol: '',

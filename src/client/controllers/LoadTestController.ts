@@ -12,7 +12,7 @@ import {
 } from '../toolkit-refactor/reqRes/reqResSlice';
 import { ReqRes, WindowExt } from '../../types';
 import { LoadTestResult } from '../components/main/new-request/stressTest/LoadTest';
-import { graphUpdated } from '../toolkit-refactor/graphPoints/graphPointsSlice';
+import { graphUpdated } from '../toolkit-refactor/slices/graphPointsSlice';
 
 const { api } = window as unknown as WindowExt;
 

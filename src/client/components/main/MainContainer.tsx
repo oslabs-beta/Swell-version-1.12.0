@@ -11,17 +11,17 @@ import {
   newRequestStreamsSet,
   newRequestBodySet,
   newRequestHeadersSet,
-} from '../../toolkit-refactor/newRequest/newRequestSlice';
-import { openApiRequestsReplaced } from '../../toolkit-refactor/newRequestOpenApi/newRequestOpenApiSlice';
+} from '../../toolkit-refactor/slices/newRequestSlice';
+import { openApiRequestsReplaced } from '../../toolkit-refactor/slices/newRequestOpenApiSlice';
 import {
   setWorkspaceActiveTab,
   /*, setComposerDisplay */
-} from '../../toolkit-refactor/ui/uiSlice';
+} from '../../toolkit-refactor/slices/uiSlice';
 import {
   fieldsReplaced,
   newTestContentSet,
-} from '../../toolkit-refactor/newRequestFields/newRequestFieldsSlice';
-import { setWarningMessage } from '../../toolkit-refactor/warningMessage/warningMessageSlice';
+} from '../../toolkit-refactor/slices/newRequestFieldsSlice';
+import { setWarningMessage } from '../../toolkit-refactor/slices/warningMessageSlice';
 
 // Import local components.
 import Http2Composer from './http2-composer/Http2Composer';

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import dropDownArrow from './../../../../assets/icons/arrow_drop_down_white_192x192.png';
 
 import { RootState } from '../../../toolkit-refactor/store';
-import { fieldsReplaced } from '../../../toolkit-refactor/newRequestFields/newRequestFieldsSlice';
+import { fieldsReplaced } from '../../../toolkit-refactor/slices/newRequestFieldsSlice';
 
 const TRPCMethodAndEndpointEntryForm = () => {
   const [dropdownIsActive, setDropdownIsActive] = useState(false);
