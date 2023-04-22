@@ -25,14 +25,14 @@ import { setWarningMessage } from '../../toolkit-refactor/warningMessage/warning
 
 // Import local components.
 import Http2Composer from './http2-composer/Http2Composer';
-import GraphQLComposer from './GraphQLComposer';
-import GRPCComposer from './GRPCComposer';
-import WebSocketComposer from './WebSocketComposer';
-import WebRTCComposer from './WebRTCComposer';
-import OpenAPIComposer from './OpenAPIComposer';
-import WebhookComposer from './WebhookComposer';
-import TRPCComposer from './TRPCComposer';
-import MockServerComposer from './MockServerComposer';
+import GraphQLComposer from './GraphQL-composer/GraphQLComposer';
+import GRPCComposer from './GRPC-composer/GRPCComposer';
+import WebSocketComposer from './WebSocket-composer/WebSocketComposer';
+import WebRTCComposer from './WebRTC-composer/WebRTCComposer';
+import OpenAPIComposer from './OpenAPI-composer/OpenAPIComposer';
+import WebhookComposer from './WebHook-composer/WebhookComposer';
+import TRPCComposer from './TRPC-composer/TRPCComposer';
+import MockServerComposer from './MockServer-composer/MockServerComposer';
 import ResponsePaneContainer from './response/ResponsePaneContainer';
 
 // Import MUI components

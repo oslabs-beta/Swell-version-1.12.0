@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import TextCodeArea from './TextCodeArea';
+import TextCodeArea from '../new-request/TextCodeArea';
 
 const GraphQLVariableEntryForm = (props) => {
   const {

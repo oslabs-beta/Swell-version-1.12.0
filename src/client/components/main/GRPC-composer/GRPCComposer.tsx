@@ -1,18 +1,19 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 // Import controllers
-import historyController from '../../controllers/historyController';
+import historyController from '../../../controllers/historyController';
 // Import local components
 
 /**
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import GRPCTypeAndEndpointEntryForm from './new-request/GRPCTypeAndEndpointEntryForm';
-import HeaderEntryForm from './new-request/HeaderEntryForm';
-import GRPCProtoEntryForm from './new-request/GRPCProtoEntryForm.jsx';
-import NewRequestButton from './new-request/NewRequestButton.jsx';
-import TestEntryForm from './new-request/TestEntryForm';
+import GRPCTypeAndEndpointEntryForm from './GRPCTypeAndEndpointEntryForm.jsx';
+import HeaderEntryForm from '../new-request/HeaderEntryForm';
+import GRPCProtoEntryForm from './GRPCProtoEntryForm.jsx';
+import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import TestEntryForm from '../new-request/TestEntryForm';
+
 // Import MUI components
 import { Box } from '@mui/material';
 

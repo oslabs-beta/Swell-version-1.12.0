@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   startServer,
   stopServer,
-} from '../../../client/toolkit-refactor/mockServer/mockServerSlice';
-import { newRequestFieldsByProtocol } from '../../toolkit-refactor/newRequestFields/newRequestFieldsSlice';
+} from '../../../toolkit-refactor/mockServer/mockServerSlice';
+import { newRequestFieldsByProtocol } from '../../../toolkit-refactor/newRequestFields/newRequestFieldsSlice';
 
 // forms
-import RestMethodAndEndpointEntryForm from './new-request/RestMethodAndEndpointEntryForm';
-import HeaderEntryForm from './new-request/HeaderEntryForm';
-import CookieEntryForm from './new-request/CookieEntryForm';
-import BodyEntryForm from './new-request/BodyEntryForm';
+import RestMethodAndEndpointEntryForm from '../http2-composer/RestMethodAndEndpointEntryForm';
+import HeaderEntryForm from '../new-request/HeaderEntryForm';
+import CookieEntryForm from '../new-request/CookieEntryForm';
+import BodyEntryForm from '../new-request/BodyEntryForm';
 
 // mui
 import { Box, Button, Modal, Typography } from '@mui/material';

@@ -1,18 +1,18 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 // Import controllers
-import historyController from '../../controllers/historyController';
+import historyController from '../../../controllers/historyController';
 // Import local components
 
 /**
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import NewRequestButton from './new-request/NewRequestButton.jsx';
-import OpenAPIEntryForm from './new-request/OpenAPIEntryForm';
-import OpenAPIDocumentEntryForm from './new-request/OpenAPIDocumentEntryForm.jsx';
-import OpenAPIMetadata from './new-request/OpenAPIMetadata.jsx';
-import OpenAPIServerForm from './new-request/OpenAPIServerForm.jsx';
+import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import OpenAPIEntryForm from './OpenAPIEntryForm';
+import OpenAPIDocumentEntryForm from './OpenAPIDocumentEntryForm.jsx';
+import OpenAPIMetadata from './OpenAPIMetadata.jsx';
+import OpenAPIServerForm from './OpenAPIServerForm.jsx';
 // Import MUI components
 import { Box } from '@mui/material';
 

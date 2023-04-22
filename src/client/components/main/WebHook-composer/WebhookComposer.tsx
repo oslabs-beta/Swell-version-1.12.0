@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 
 // Import MUI components
 import { Box } from '@mui/material';
-import { $TSFixMe } from '../../../types';
+import { $TSFixMe } from '../../../../types';
 
 const socket = io('http://localhost:3000');
 

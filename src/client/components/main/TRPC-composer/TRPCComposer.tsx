@@ -1,19 +1,19 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 // Import controllers
-import SendRequestButton from './new-request/SendRequestButton';
+import SendRequestButton from '../new-request/SendRequestButton';
 // Import local components
-import TRPCMethodAndEndpointEntryForm from './tRPC/TRPCMethodAndEndpointEntryForm';
-import TRPCBodyEntryForm from './tRPC/TRPCBodyEntryForm';
+import TRPCMethodAndEndpointEntryForm from './TRPCMethodAndEndpointEntryForm';
+import TRPCBodyEntryForm from './TRPCBodyEntryForm';
 // Import Redux hooks
 import { useSelector, useDispatch } from 'react-redux';
 // Import Actions from RTK slice
-import { newRequestBodySet } from '../../toolkit-refactor/newRequest/newRequestSlice';
-import { responseDataSaved } from '../../toolkit-refactor/reqRes/reqResSlice';
+import { newRequestBodySet } from '../../../toolkit-refactor/newRequest/newRequestSlice';
+import { responseDataSaved } from '../../../toolkit-refactor/reqRes/reqResSlice';
 
 // Import MUI components
 import { Box } from '@mui/material';
-import { RootState } from '../../toolkit-refactor/store';
+import { RootState } from '../../../toolkit-refactor/store';
 
 // import tRPC client Module
 import {

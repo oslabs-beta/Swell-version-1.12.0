@@ -4,12 +4,14 @@ const cors = require('cors');
 
 const app = express();
 
-const PORT = 3004;
+const PORT = 5004;
 
 let mockDB = [];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', (req,res) => {console.log(`This is a test`)})
 
 app.get('/clear', (req, res) => {
   mockDB = [];
@@ -67,6 +69,7 @@ app.delete('/book/:title', (req, res) => {
   });
   res.status(200).json(targetBook);
 });
+
 
 const httpApp = app.listen(PORT, () => {
   console.log(`HTTP Server listening on port: ${PORT}`);

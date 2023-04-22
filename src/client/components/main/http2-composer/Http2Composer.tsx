@@ -16,7 +16,7 @@ import historyController from '../../../controllers/historyController';
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import RestMethodAndEndpointEntryForm from '../new-request/RestMethodAndEndpointEntryForm';
+import RestMethodAndEndpointEntryForm from './RestMethodAndEndpointEntryForm';
 import HeaderEntryForm from '../new-request/HeaderEntryForm';
 import CookieEntryForm from '../new-request/CookieEntryForm';
 import SendRequestButton from '../new-request/SendRequestButton';

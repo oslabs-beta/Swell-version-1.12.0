@@ -1,3 +1,5 @@
+// Commenting this out broke the dev versions workspace component
+
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
 
@@ -6,7 +8,7 @@ import {
   reqResItemDeleted,
 } from '../../toolkit-refactor/reqRes/reqResSlice';
 
-import SingleReqResContainer from './SingleReqResContainer';
+// import SingleReqResContainer from './SingleReqResContainer.jsx';
 import ReqResCtrl from '../../controllers/reqResController';
 import { RootState } from '../../toolkit-refactor/store';
 

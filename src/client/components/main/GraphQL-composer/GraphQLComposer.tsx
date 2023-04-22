@@ -2,26 +2,26 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { v4 as uuid } from 'uuid';
 // Import controllers
-import historyController from '../../controllers/historyController';
+import historyController from '../../../controllers/historyController';
 // Import local components
 
 /**
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import HeaderEntryForm from './new-request/HeaderEntryForm.jsx';
-import GraphQLMethodAndEndpointEntryForm from './new-request/GraphQLMethodAndEndpointEntryForm';
-import CookieEntryForm from './new-request/CookieEntryForm';
-import GraphQLBodyEntryForm from './new-request/GraphQLBodyEntryForm';
-import GraphQLVariableEntryForm from './new-request/GraphQLVariableEntryForm';
-import GraphQLIntrospectionLog from './new-request/GraphQLIntrospectionLog.jsx';
-import NewRequestButton from './new-request/NewRequestButton.jsx';
-import TestEntryForm from './new-request/TestEntryForm.jsx';
-import TestContainer from '../workspace/TestContainer';
+import HeaderEntryForm from '../new-request/HeaderEntryForm.jsx';
+import GraphQLMethodAndEndpointEntryForm from './GraphQLMethodAndEndpointEntryForm';
+import CookieEntryForm from '../new-request/CookieEntryForm';
+import GraphQLBodyEntryForm from './GraphQLBodyEntryForm';
+import GraphQLVariableEntryForm from './GraphQLVariableEntryForm';
+import GraphQLIntrospectionLog from './GraphQLIntrospectionLog.jsx';
+import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import TestEntryForm from '../new-request/TestEntryForm.jsx';
+import TestContainer from '../../workspace/TestContainer';
 
 // Import MUI components
 import { Box } from '@mui/material';
-import { $TSFixMe, ReqRes } from '../../../types';
+import { $TSFixMe, ReqRes } from '../../../../types';
 
 // Translated from GraphQLContainer.jsx
 export default function GraphQLComposer(props: $TSFixMe) {

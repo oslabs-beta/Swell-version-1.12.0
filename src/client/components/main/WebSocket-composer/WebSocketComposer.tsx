@@ -1,15 +1,15 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 // Import controllers
-import historyController from '../../controllers/historyController';
+import historyController from '../../../controllers/historyController';
 // Import local components
 /**
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import WSEndpointEntryForm from './new-request/WSEndpointEntryForm';
-import NewRequestButton from './new-request/NewRequestButton.jsx';
-import TestEntryForm from './new-request/TestEntryForm';
+import WSEndpointEntryForm from './WSEndpointEntryForm';
+import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import TestEntryForm from '../new-request/TestEntryForm.jsx';
 // Import MUI components
 import { Box } from '@mui/material';
 

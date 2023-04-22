@@ -1,6 +1,6 @@
 /* eslint-disable lines-between-class-members */
 import React, { useState, useEffect } from 'react';
-import TextCodeArea from './TextCodeArea';
+import TextCodeArea from '../new-request/TextCodeArea';
 
 const GRPCBodyStream = (props) => {
   const [showError, setError] = useState(null);
