@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TextCodeArea from './TextCodeArea';
-import RestTestSnippets from './test-snippets/RestTestSnippets';
-import WebsocketTestSnippets from './test-snippets/WebsocketTestSnippets';
+import RestTestSnippets from './stressTest/RestTestSnippets';
+import WebsocketTestSnippets from './stressTest/WebsocketTestSnippets';
 
 const TestEntryForm = (props) => {
   const { isWebSocket, testContent, newTestContentSet } = props;

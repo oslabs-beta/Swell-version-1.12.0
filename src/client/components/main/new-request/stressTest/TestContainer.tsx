@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { LoadTest, LoadTestResult } from '../main/loadTest/LoadTest';
-import LoadTestController from '../../controllers/LoadTestController';
+import { LoadTest, LoadTestResult } from './LoadTest';
+import LoadTestController from '../../../../controllers/LoadTestController';
 import { connect } from 'react-redux';
-import { RootState } from '../../toolkit-refactor/store';
-import { ReqRes } from '../../../types';
+import { RootState } from '../../../../toolkit-refactor/store';
+import { ReqRes } from '../../../../../types';
 import { Box } from '@mui/material';
-import { SwellWrappedTooltip } from '../customMuiStyles/tooltip';
+import { SwellWrappedTooltip } from '../../../customMuiStyles/tooltip';
 
 /**
  * TestContainer component allows users to configure and perform load tests.

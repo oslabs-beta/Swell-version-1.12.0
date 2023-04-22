@@ -17,7 +17,7 @@ import GraphQLVariableEntryForm from './GraphQLVariableEntryForm';
 import GraphQLIntrospectionLog from './GraphQLIntrospectionLog.jsx';
 import NewRequestButton from '../new-request/NewRequestButton.jsx';
 import TestEntryForm from '../new-request/TestEntryForm.jsx';
-import TestContainer from '../../workspace/TestContainer';
+import TestContainer from '../new-request/stressTest/TestContainer';
 
 // Import MUI components
 import { Box } from '@mui/material';

@@ -27,7 +27,7 @@ import TestEntryForm from '../new-request/TestEntryForm';
 import { Box, FormControlLabel, Switch } from '@mui/material';
 import { CookieOrHeader, ReqRes } from '../../../../types';
 
-import TestContainer from '../../workspace/TestContainer';
+import TestContainer from '../new-request/stressTest/TestContainer';
 
 // Translated from RestContainer.jsx
 export default function Http2Composer(props) {

@@ -23,8 +23,8 @@ export type LoadTestResult = [
   errorCounts: { [errorCode: string]: number } },
 ];
 
-  
-  export async function LoadTest(
+
+export async function LoadTest(
     reqResObj: any,
     requestsPerSecond: number,
     durationInSeconds: number,
@@ -45,9 +45,9 @@ export type LoadTestResult = [
     let totalNotSent = 0;
     const errorCounts: { [errorCode: string]: number } = {};
 
-    interface Header {
+    // interface Header {
       
-    }
+    // }
   
     // Define the sendRequest function, which sends a request to the target URL and updates the counters.
     const sendRequest = async () => {

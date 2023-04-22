@@ -1,4 +1,5 @@
-// Commenting this out broke the dev versions workspace component
+// This is a legacy state management compoonent that need to
+// be migrated to the RTK slice?? 
 
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
@@ -6,11 +7,11 @@ import { connect, useSelector } from 'react-redux';
 import {
   reqResUpdated,
   reqResItemDeleted,
-} from '../../toolkit-refactor/reqRes/reqResSlice';
+} from './reqResSlice';
 
 // import SingleReqResContainer from './SingleReqResContainer.jsx';
 import ReqResCtrl from '../../controllers/reqResController';
-import { RootState } from '../../toolkit-refactor/store';
+import { RootState } from '../store';
 
 /**@todo change to use hooks? */
 const mapStateToProps = (store: RootState) => ({
