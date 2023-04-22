@@ -117,7 +117,9 @@ describe('REST API Requests', () => {
 
       state = ReqResCtrl.openReqRes(request);
       const response = state.reqResArray[0];
-      expect(response.toEqual('hello'));
+      console.log(response);
+      expect(response.status).toEqual(200);
+      // expect(response.toEqual('hello'));
     });
 
     it('should toggle select all', () => {

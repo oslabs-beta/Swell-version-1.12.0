@@ -17,6 +17,8 @@ import graphQLController from './graphQLController';
 import { ReqRes, WindowExt } from '../../types';
 
 const { api } = window as unknown as WindowExt;
+
+// This handles all connections
 const connectionController = {
   openConnectionArray: [] as number[] | number[],
 
@@ -31,6 +33,7 @@ const connectionController = {
     }
     appDispatch(reqResReplaced(reqResArray));
   },
+
   // listens for reqResUpdate event from main process telling it to update reqResObj REST EVENTS
   openReqRes(id: number | string): void {
     // remove all previous listeners for 'reqResUpdate' before starting to listen for 'reqResUpdate' again
@@ -79,6 +82,7 @@ const connectionController = {
       console.log('got an open api request to fill');
       //console.log(reqResObj);
     } else {
+      console.log('we\'re sending http')
       api.send('open-http', reqResObj, this.openConnectionArray);
     }
   },
