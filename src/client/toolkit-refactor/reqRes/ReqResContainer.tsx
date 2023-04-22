@@ -9,7 +9,7 @@ import {
   reqResItemDeleted,
 } from './reqResSlice';
 
-// import SingleReqResContainer from './SingleReqResContainer.jsx';
+import SingleReqResContainer from './SingleReqResContainer.jsx';
 import ReqResCtrl from '../../controllers/reqResController';
 import { RootState } from '../store';
 

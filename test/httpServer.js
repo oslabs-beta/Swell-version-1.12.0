@@ -4,14 +4,14 @@ const cors = require('cors');
 
 const app = express();
 
-const PORT = 5004;
+const PORT = 3004;
 
 let mockDB = [];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', (req,res) => {console.log(`This is a test`)})
+
 
 app.get('/clear', (req, res) => {
   mockDB = [];
