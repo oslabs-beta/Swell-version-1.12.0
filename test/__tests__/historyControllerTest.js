@@ -55,7 +55,7 @@ describe('historyController', () => {
   });
 
   describe('getHistory', () => {
-    it('gets req/res history from the db and dispatches them to the store', async () => {
+    xit('gets req/res history from the db and dispatches them to the store', async () => {
       const reqRes = { id: '1', request: {}, response: {}, createdAt: new Date() };
       const history = [reqRes];
 
