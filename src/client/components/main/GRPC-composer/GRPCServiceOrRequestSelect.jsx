@@ -1,10 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import dropDownArrow from '../../../../assets/icons/caret-down.svg';
 
-const classNames = require('classnames');
+// const classNames = require('classnames');
 
 const GRPCServiceOrRequestSelect = (props) => {
-  const { value, items, onClick, defaultTitle, id } = props;
+  const { 
+    value, 
+    items, 
+    onClick, 
+    defaultTitle, 
+    id 
+  } = props;
 
   const [dropdownIsActive, setDropdownIsActive] = useState();
   const dropdownEl = useRef();
@@ -40,7 +46,7 @@ const GRPCServiceOrRequestSelect = (props) => {
   return (
     <div
       ref={dropdownEl}
-      className={` dropdown ${dropdownIsActive ? 'is-active' : ''}`}
+      className={`mt-1 mb- dropdown ${dropdownIsActive ? 'is-active' : ''}`}
     >
       <div className="dropdown-trigger">
         <button
@@ -61,9 +67,9 @@ const GRPCServiceOrRequestSelect = (props) => {
         </button>
       </div>
       <div className="dropdown-menu">
-        {!!listItems.length && (
-          <ul className="dropdown-content">{listItems}</ul>
-        )}
+        <ul className="dropdown-content">
+          {listItems}
+        </ul>
       </div>
     </div>
   );

@@ -43,10 +43,8 @@ const connectionController = {
       if (
         (reqResObj.connection === 'closed' ||
           reqResObj.connection === 'error') &&
-        reqResObj.timeSent &&
-        reqResObj.timeReceived &&
-        reqResObj.response.events &&
-        reqResObj.response.events.length > 0
+        reqResObj.timeSent && reqResObj.timeReceived &&
+        reqResObj.response.events && reqResObj.response.events.length > 0
       ) {
         appDispatch(graphUpdated(reqResObj));
       }
@@ -78,6 +76,8 @@ const connectionController = {
     else if (reqResObj.gRPC) {
       api.send('open-grpc', reqResObj);
       // Standard HTTP?
+      // TODO (look for TODO tree)
+      // check streams here /////////////////////////////////////////////////////////////// (note for Billy)
     } else if (reqResObj.openapi) {
       console.log('got an open api request to fill');
       //console.log(reqResObj);

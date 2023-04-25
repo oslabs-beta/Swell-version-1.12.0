@@ -145,7 +145,9 @@ const GRPCAutoInputForm = (props) => {
   }, [streamContent]);
 
   //default options shown for services and request dropdowns
+  // const servicesList = ['UNARY', 'CLIENT STREAM', 'SERVER STREAM', 'BI-DIRECTIONAL'];
   const servicesList = [];
+  // const rpcsList = ['UNARY', 'CLIENT STREAM', 'SERVER STREAM', 'BI-DIRECTIONAL'];
   const rpcsList = [];
 
   // autopopulates the service dropdown list
