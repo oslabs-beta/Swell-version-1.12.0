@@ -103,6 +103,7 @@
     "@jest-runner/electron": "^3.0.1",
     "@redux-devtools/extension": "^3.2.2",
     "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/react": "^14.0.0",
     "@trpc/client": "^10.10.0",
     "@uiw/codemirror-extensions-langs": "^4.19.9",
     "@uiw/codemirror-theme-vscode": "^4.19.9",
