@@ -68,7 +68,7 @@ module.exports = () => {
     before((done) => {
       try {
         fs.readFile(
-          path.join(__dirname, '../hw2.proto'),
+          path.join(__dirname, '../grpc_mockData/protos/hw2.proto'),
           'utf8',
           (err, data) => {
             if (err) console.log(err);
@@ -130,7 +130,7 @@ module.exports = () => {
       }
     };
 
-    xit('it should work on a unary request', async () => {
+    it('it should work on a unary request', async () => {
       try {
         await page.locator('#composer >> a >> text=Greeter').click();
         await page.locator('#Select-Request-button').click();
@@ -148,7 +148,7 @@ module.exports = () => {
     });
 
     
-    xit('it should work on a nested unary request', async () => {
+    it('it should work on a nested unary request', async () => {
       try {
         await page.locator('#SayHello-button').click();
         await page.locator('a >> text=SayHelloNested').click();
