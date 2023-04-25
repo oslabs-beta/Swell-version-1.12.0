@@ -1,7 +1,7 @@
 /**
  * @file Defines slice for working with collection values.
  *
- * @todo Figure out exactly what a collection is.
+ * @todo Collections are the history objects
  * @todo Check the for...of calls in collectionDeleted to see if the splices
  * cause elements to be skipped.
  */
