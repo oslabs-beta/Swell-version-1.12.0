@@ -1,130 +1,130 @@
-// import historySliceReducer, {
-//   historyCleared,
-//   historySet,
-//   historyDeleted,
-// } from '../../src/client/toolkit-refactor/slices/historySlice';
+import historySliceReducer, {
+  historyCleared,
+  historySet,
+  historyDeleted,
+} from '../../src/client/toolkit-refactor/slices/historySlice';
 
-// describe('HistorySlice', () => {
-//   let initialState;
-//   let historyItem;
+describe('HistorySlice', () => {
+  let initialState;
+  let historyItem;
 
-//   beforeEach(() => {
-//     initialState = [
-//       {
-//         date: '01/01/2022',
-//         history: [
-//           {
-//             id: 1,
-//             createdAt: '2022-01-01T00:00:00.000Z',
-//           },
-//         ],
-//       },
-//     ];
+  beforeEach(() => {
+    initialState = [
+      {
+        date: '01/01/2022',
+        history: [
+          {
+            id: 1,
+            createdAt: '2022-01-01T00:00:00.000Z',
+          },
+        ],
+      },
+    ];
 
-//     historyItem = {
-//       id: 2,
-//       createdAt: '2022-01-02T00:00:00.000Z',
-//     };
-//   });
+    historyItem = {
+      id: 2,
+      createdAt: '2022-01-02T00:00:00.000Z',
+    };
+  });
 
-//   describe('historyCleared', () => {
-//     it('should clear the history', () => {
-//       const newState = historySliceReducer(initialState, historyCleared());
-//       expect(newState).toEqual([]);
-//     });
-//   });
+  describe('historyCleared', () => {
+    it('should clear the history', () => {
+      const newState = historySliceReducer(initialState, historyCleared());
+      expect(newState).toEqual([]);
+    });
+  });
 
-//   describe('historySet', () => {
-//     it('should set the history to a new value', () => {
-//       const newHistory = [
-//         {
-//           date: '01/02/2022',
-//           history: [historyItem],
-//         },
-//       ];
+  describe('historySet', () => {
+    it('should set the history to a new value', () => {
+      const newHistory = [
+        {
+          date: '01/02/2022',
+          history: [historyItem],
+        },
+      ];
 
-//       const newState = historySliceReducer(
-//         initialState,
-//         historySet(newHistory)
-//       );
+      const newState = historySliceReducer(
+        initialState,
+        historySet(newHistory)
+      );
 
-//       expect(newState).toEqual(newHistory);
-//     });
-//   });
+      expect(newState).toEqual(newHistory);
+    });
+  });
 
-//   describe('historyDeleted', () => {
-//     it('should delete the specified item from the history', () => {
-//       const action = { payload: { id: 1, createdAt: '2022-01-01T00:00:00.000Z' } };
-//       const newState = historySliceReducer(initialState, historyDeleted(action.payload));
-//       const expectedState = [];
-//       expect(newState).toEqual(expectedState);
-//     });
+  describe('historyDeleted', () => {
+    it('should delete the specified item from the history', () => {
+      const action = { payload: { id: 1, createdAt: '2022-01-01T00:00:00.000Z' } };
+      const newState = historySliceReducer(initialState, historyDeleted(action.payload));
+      const expectedState = [];
+      expect(newState).toEqual(expectedState);
+    });
 
-//     it('should update the history when an item is deleted', () => {
-//       const action = { payload: historyItem };
-//       const newState = historySliceReducer(initialState, historyDeleted(action.payload));
-//       const expectedState = [
-//         {
-//           date: '01/01/2022',
-//           history: [
-//             {
-//               id: 1,
-//               createdAt: '2022-01-01T00:00:00.000Z',
-//             },
-//           ],
-//         },
-//       ];
-//       expect(newState).toEqual(expectedState);
-//     });
-//   });
+    it('should update the history when an item is deleted', () => {
+      const action = { payload: historyItem };
+      const newState = historySliceReducer(initialState, historyDeleted(action.payload));
+      const expectedState = [
+        {
+          date: '01/01/2022',
+          history: [
+            {
+              id: 1,
+              createdAt: '2022-01-01T00:00:00.000Z',
+            },
+          ],
+        },
+      ];
+      expect(newState).toEqual(expectedState);
+    });
+  });
 
-//   describe('reqResItemAdded', () => {
-//     it('should add a new item to the history if it does not already exist', () => {
-//       const action = { payload: historyItem };
-//       const newState = historySliceReducer(initialState, action);
-//       const expectedState = [
-//         {
-//           date: '01/02/2022',
-//           history: [historyItem],
-//         },
-//         {
-//           date: '01/01/2022',
-//           history: [
-//             {
-//               id: 1,
-//               createdAt: '2022-01-01T00:00:00.000Z',
-//             },
-//           ],
-//         },
-//       ];
-//       expect(newState).toEqual(expectedState);
-//     });
+  describe('reqResItemAdded', () => {
+    it('should add a new item to the history if it does not already exist', () => {
+      const action = { payload: historyItem };
+      const newState = historySliceReducer(initialState, action);
+      const expectedState = [
+        {
+          date: '01/02/2022',
+          history: [historyItem],
+        },
+        {
+          date: '01/01/2022',
+          history: [
+            {
+              id: 1,
+              createdAt: '2022-01-01T00:00:00.000Z',
+            },
+          ],
+        },
+      ];
+      expect(newState).toEqual(expectedState);
+    });
 
-//     it('should add a new item to an existing history', () => {
-//         const newItem = {
-//           id: 3,
-//           createdAt: '2022-01-01T00:00:00.000Z',
-//         };
+    it('should add a new item to an existing history', () => {
+        const newItem = {
+          id: 3,
+          createdAt: '2022-01-01T00:00:00.000Z',
+        };
   
-//         const action = { payload: newItem };
-//         const newState = historySliceReducer(initialState, action);
-//         const expectedState = [
-//           {
-//             date: '01/01/2022',
-//             history: [
-//                 {
-//                   id: 3,
-//                   createdAt: '2022-01-01T00:00:00.000Z',
-//                 },
-//                 {
-//                   id: 1,
-//                   createdAt: '2022-01-01T00:00:00.000Z',
-//                 },
-//               ],
-//             },
-//           ];
+        const action = { payload: newItem };
+        const newState = historySliceReducer(initialState, action);
+        const expectedState = [
+          {
+            date: '01/01/2022',
+            history: [
+                {
+                  id: 3,
+                  createdAt: '2022-01-01T00:00:00.000Z',
+                },
+                {
+                  id: 1,
+                  createdAt: '2022-01-01T00:00:00.000Z',
+                },
+              ],
+            },
+          ];
     
-//           expect(newState).toEqual(expectedState);
-//         });
-//       });
-//     });
+          expect(newState).toEqual(expectedState);
+        });
+      });
+    });
