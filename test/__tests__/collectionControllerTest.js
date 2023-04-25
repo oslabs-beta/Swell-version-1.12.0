@@ -5,201 +5,287 @@ import { appDispatch } from '../../src/client/toolkit-refactor/store';
 import { collectionsReplaced } from '../toolkit-refactor/slices/collectionsSlice';
 
 
-jest.mock('../../src/client/db');
-jest.mock('../../src/client/toolkit-refactor/store');
+// jest.mock('../../src/client/db');
+// jest.mock('../../src/client/toolkit-refactor/store');
 
-xdescribe('collectionsController', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+// const mockApi = {
+//   send: jest.fn(),
+//   receive: jest.fn(),
+// };
 
-  xdescribe('addCollectionToIndexedDb', () => {
-    it('adds collections to the db', () => {
-      const collectionArr = [
-        { id: '1', name: 'Collection 1', createdAt: new Date() },
-        { id: '2', name: 'Collection 2', createdAt: new Date() },
-      ];
+// const collectionsControllerWithMockApi = {
+//   ...collectionsController,
+//   api: mockApi,
+// };
 
-      db.table.mockReturnValue({
-        put: jest.fn().mockResolvedValue(null),
-      });
+// xdescribe('collectionsController', () => {
+//   beforeEach(() => {
+//     jest.clearAllMocks();
+//   });
 
-      collectionsController.addCollectionToIndexedDb(collectionArr);
+//   xdescribe('addCollectionToIndexedDb', () => {
+//     it('adds collections to the db', () => {
+//       const collectionArr = [
+//         { id: '1', name: 'Collection 1', createdAt: new Date() },
+//         { id: '2', name: 'Collection 2', createdAt: new Date() },
+//       ];
 
-      expect(db.table).toHaveBeenCalledWith('collections');
+//       db.table.mockReturnValue({
+//         put: jest.fn().mockResolvedValue(null),
+//       });
 
-      for (const collection of collectionArr) {
-        expect(db.table().put).toHaveBeenCalledWith(collection);
-      }
-    });
-  });
+//       collectionsController.addCollectionToIndexedDb(collectionArr);
 
-  describe('deleteCollectionFromIndexedDb', () => {
-    it('deletes a collection from the db', () => {
-      const id = '1';
+//       expect(db.table).toHaveBeenCalledWith('collections');
 
-      db.table.mockReturnValue({
-        delete: jest.fn().mockResolvedValue(null),
-      });
+//       for (const collection of collectionArr) {
+//         expect(db.table().put).toHaveBeenCalledWith(collection);
+//       }
+//     });
+//   });
 
-      collectionsController.deleteCollectionFromIndexedDb(id);
+//   describe('deleteCollectionFromIndexedDb', () => {
+//     it('deletes a collection from the db', () => {
+//       const id = '1';
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().delete).toHaveBeenCalledWith(id);
-    });
-  });
+//       db.table.mockReturnValue({
+//         delete: jest.fn().mockResolvedValue(null),
+//       });
 
-  describe('updateCollectionInIndexedDb', () => {
-    it('updates a collection in the db', () => {
-      const collection = {
-        id: '1',
-        name: 'Updated Collection',
-        createdAt: new Date(),
-      };
+//       collectionsController.deleteCollectionFromIndexedDb(id);
 
-      db.table.mockReturnValue({
-        delete: jest.fn().mockResolvedValue(null),
-        put: jest.fn().mockResolvedValue(null),
-      });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().delete).toHaveBeenCalledWith(id);
+//     });
+//   });
 
-      collectionsController.updateCollectionInIndexedDb(collection);
+//   describe('updateCollectionInIndexedDb', () => {
+//     it('updates a collection in the db', () => {
+//       const collection = {
+//         id: '1',
+//         name: 'Updated Collection',
+//         createdAt: new Date(),
+//       };
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().delete).toHaveBeenCalledWith(collection.id);
-      expect(db.table().put).toHaveBeenCalledWith(collection);
-    });
-  });
+//       db.table.mockReturnValue({
+//         delete: jest.fn().mockResolvedValue(null),
+//         put: jest.fn().mockResolvedValue(null),
+//       });
 
-  describe('getCollections', () => {
-    it('gets collections from the db and dispatches them to the store', async () => {
-      const collections = [
-        { id: '1', name: 'Collection 1', createdAt: new Date() },
-        { id: '2', name: 'Collection 2', createdAt: new Date() },
-      ];
+//       collectionsController.updateCollectionInIndexedDb(collection);
 
-      db.table.mockReturnValue({
-        toArray: jest.fn().mockResolvedValue(collections),
-      });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().delete).toHaveBeenCalledWith(collection.id);
+//       expect(db.table().put).toHaveBeenCalledWith(collection);
+//     });
+//   });
 
-      const dispatchSpy = jest.spyOn(appDispatch, 'mockReturnValue');
-      collectionsReplaced.mockReturnValue({ type: 'collections/replaced' });
+//   describe('getCollections', () => {
+//     it('gets collections from the db and dispatches them to the store', async () => {
+//       const collections = [
+//         { id: '1', name: 'Collection 1', createdAt: new Date() },
+//         { id: '2', name: 'Collection 2', createdAt: new Date() },
+//       ];
 
-      await collectionsController.getCollections();
+//       db.table.mockReturnValue({
+//         toArray: jest.fn().mockResolvedValue(collections),
+//       });
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().toArray).toHaveBeenCalled();
+//       const dispatchSpy = jest.spyOn(appDispatch, 'mockReturnValue');
+//       collectionsReplaced.mockReturnValue({ type: 'collections/replaced' });
 
-      collections.forEach((collection) => {
-        expect(collection.createdAt).toBeInstanceOf(Date);
-      });
+//       await collectionsController.getCollections();
 
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        collectionsReplaced(collections)
-      );
-    });
-  });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().toArray).toHaveBeenCalled();
 
-  describe('collectionNameExists', () => {
-    it('returns true if a collection with the given name exists in the db', async () => {
-      const name = 'Collection 1';
+//       collections.forEach((collection) => {
+//         expect(collection.createdAt).toBeInstanceOf(Date);
+//       });
 
-      db.table.mockReturnValue({
-        where: jest.fn().mockReturnThis(),
-        equalsIgnoreCase: jest.fn().mockReturnThis(),
-        first: jest.fn().mockResolvedValue({}),
-      });
+//       expect(dispatchSpy).toHaveBeenCalledWith(
+//         collectionsReplaced(collections)
+//       );
+//     });
+//   });
 
-      const result = await collectionsController.collectionNameExists(name);
+//   describe('collectionNameExists', () => {
+//     it('returns true if a collection with the given name exists in the db', async () => {
+//       const name = 'Collection 1';
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().where().equalsIgnoreCase).toHaveBeenCalledWith('name');
-      expect(db.table().where().equalsIgnoreCase().first).toHaveBeenCalled();
-      expect(result).toBe(true);
-    });
+//       db.table.mockReturnValue({
+//         where: jest.fn().mockReturnThis(),
+//         equalsIgnoreCase: jest.fn().mockReturnThis(),
+//         first: jest.fn().mockResolvedValue({}),
+//       });
 
-    it('returns false if a collection with the given name does not exist in the db', async () => {
-      const name = 'Collection 3';
+//       const result = await collectionsController.collectionNameExists(name);
 
-      db.table.mockReturnValue({
-        where: jest.fn().mockReturnThis(),
-        equalsIgnoreCase: jest.fn().mockReturnThis(),
-        first: jest.fn().mockResolvedValue(undefined),
-      });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().where().equalsIgnoreCase).toHaveBeenCalledWith('name');
+//       expect(db.table().where().equalsIgnoreCase().first).toHaveBeenCalled();
+//       expect(result).toBe(true);
+//     });
 
-      const result = await collectionsController.collectionNameExists(name);
+//     it('returns false if a collection with the given name does not exist in the db', async () => {
+//       const name = 'Collection 3';
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().where).toHaveBeenCalledWith('name');
-      expect(db.table().where().equalsIgnoreCase).toHaveBeenCalledWith(name);
-      expect(db.table().where().equalsIgnoreCase().first).toHaveBeenCalled();
-      expect(result).toBe(false);
-    });
-  });
+//       db.table.mockReturnValue({
+//         where: jest.fn().mockReturnThis(),
+//         equalsIgnoreCase: jest.fn().mockReturnThis(),
+//         first: jest.fn().mockResolvedValue(undefined),
+//       });
 
-  describe('exportToFile', () => {
-    it('exports a collection to a file', () => {
-      const id = '1';
-      const collection = {
-        id: '1',
-        name: 'Collection 1',
-        createdAt: new Date(),
-      };
+//       const result = await collectionsController.collectionNameExists(name);
 
-      db.table.mockReturnValue({
-        where: jest.fn().mockReturnThis(),
-        equals: jest.fn().mockReturnThis(),
-        first: jest.fn().mockImplementation((callback) => callback(collection)),
-      });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().where).toHaveBeenCalledWith('name');
+//       expect(db.table().where().equalsIgnoreCase).toHaveBeenCalledWith(name);
+//       expect(db.table().where().equalsIgnoreCase().first).toHaveBeenCalled();
+//       expect(result).toBe(false);
+//     });
+//   });
 
-      api.send = jest.fn();
-      uuid.mockReturnValue('new-id');
+//   describe('exportToFile', () => {
+//     it('exports a collection to a file', () => {
+//       const id = '1';
+//       const collection = {
+//         id: '1',
+//         name: 'Collection 1',
+//         createdAt: new Date(),
+//       };
 
-      collectionsController.exportToFile(id);
+//       db.table.mockReturnValue({
+//         where: jest.fn().mockReturnThis(),
+//         equals: jest.fn().mockReturnThis(),
+//         first: jest.fn().mockImplementation((callback) => callback(collection)),
+//       });
 
-      expect(db.table).toHaveBeenCalledWith('collections');
-      expect(db.table().where).toHaveBeenCalledWith('id');
-      expect(db.table().where().equals).toHaveBeenCalledWith(id);
-      expect(db.table().where().equals().first).toHaveBeenCalled();
+//       api.send = jest.fn();
+//       uuid.mockReturnValue('new-id');
 
-      expect(uuid).toHaveBeenCalled();
+//       collectionsController.exportToFile(id);
 
-      expect(api.send).toHaveBeenCalledWith('export-collection', {
-        collection: {
-          ...collection,
-          name: 'Collection 1 export',
-          id: 'new-id',
-        },
-      });
-    });
-  });
+//       expect(db.table).toHaveBeenCalledWith('collections');
+//       expect(db.table().where).toHaveBeenCalledWith('id');
+//       expect(db.table().where().equals).toHaveBeenCalledWith(id);
+//       expect(db.table().where().equals().first).toHaveBeenCalled();
 
-  describe('importCollection', () => {
-    it('imports a collection and adds it to the db and dispatches to the store', async () => {
-      const collection = {
-        id: '1',
-        name: 'Collection 1',
-        createdAt: new Date(),
-      };
+//       expect(uuid).toHaveBeenCalled();
 
-      api.send = jest.fn();
-      api.receive = jest.fn().mockImplementation((eventName, callback) => {
-        if (eventName === 'add-collections') {
-          callback([collection]);
-        }
-      });
+//       expect(api.send).toHaveBeenCalledWith('export-collection', {
+//         collection: {
+//           ...collection,
+//           name: 'Collection 1 export',
+//           id: 'new-id',
+//         },
+//       });
+//     });
+//   });
 
-      const dispatchSpy = jest.spyOn(appDispatch, 'mockReturnValue');
-      collectionsReplaced.mockReturnValue({ type: 'collections/replaced' });
+//   describe('importCollection', () => {
+//     it('imports a collection and adds it to the db and dispatches to the store', async () => {
+//       const collection = {
+//         id: '1',
+//         name: 'Collection 1',
+//         createdAt: new Date(),
+//       };
 
-      const result = await collectionsController.importCollection(collection);
+//       api.send = jest.fn();
+//       api.receive = jest.fn().mockImplementation((eventName, callback) => {
+//         if (eventName === 'add-collections') {
+//           callback([collection]);
+//         }
+//       });
 
-      expect(api.send).toHaveBeenCalledWith('import-collection', collection);
+//       const dispatchSpy = jest.spyOn(appDispatch, 'mockReturnValue');
+//       collectionsReplaced.mockReturnValue({ type: 'collections/replaced' });
 
-      expect(api.receive).toHaveBeenCalledWith('add-collections', expect.any(Function));
+//       const result = await collectionsController.importCollection(collection);
 
-      expect(dispatchSpy).toHaveBeenCalledWith(collectionsReplaced([collection]));
+//       expect(api.send).toHaveBeenCalledWith('import-collection', collection);
 
-      expect(result).toBe('okie dokie');
-    });
-  });
+//       expect(api.receive).toHaveBeenCalledWith('add-collections', expect.any(Function));
+
+//       expect(dispatchSpy).toHaveBeenCalledWith(collectionsReplaced([collection]));
+
+//       expect(result).toBe('okie dokie');
+//     });
+//   });
+// });
+
+describe('collectionsController', () => {
+  let collectionsControllerWithMockApi;
+
+  // beforeEach(() => {
+  //   jest.clearAllMocks();
+
+  //   const mockApi = {
+  //     send: jest.fn(),
+  //     receive: jest.fn(),
+  //   };
+
+  //   collectionsControllerWithMockApi = {
+  //     ...collectionsController,
+  //     api: mockApi,
+  //   };
+  // });
+
+  // describe('exportToFile', () => {
+  //   it('exports a collection to a file', () => {
+  //     const id = '1';
+  //     const collection = {
+  //       id: '1',
+  //       name: 'Collection 1',
+  //       createdAt: new Date(),
+  //     };
+
+  //     db.table.mockReturnValue({
+  //       where: jest.fn().mockReturnThis(),
+  //       equals: jest.fn().mockReturnThis(),
+  //       first: jest.fn().mockImplementation((callback) => callback(collection)),
+  //     });
+
+  //     uuid.mockReturnValue('new-id');
+
+  //     collectionsControllerWithMockApi.exportToFile(id);
+
+  //     expect(db.table).toHaveBeenCalledWith('collections');
+  //     expect(db.table().where).toHaveBeenCalledWith('id');
+  //     expect(db.table().where().equals).toHaveBeenCalledWith(id);
+  //     expect(db.table().where().equals().first).toHaveBeenCalled();
+
+  //     expect(uuid).toHaveBeenCalled();
+
+  //     expect(collectionsControllerWithMockApi.api.send).toHaveBeenCalledWith('export-collection', {
+  //       collection: {
+  //         ...collection,
+  //         name: 'Collection 1 export',
+  //         id: 'new-id',
+  //       },
+  //     });
+  //   });
+  // });
+
+  // describe('importCollection', () => {
+  //   it('imports a collection and adds it to the db and dispatches to the store', async () => {
+  //     const collection = {
+  //       id: '1',
+  //       name: 'Collection 1',
+  //       createdAt: new Date(),
+  //     };
+
+  //     collectionsReplaced.mockReturnValue({ type: 'collections/replaced' });
+
+  //     const result = await collectionsControllerWithMockApi.importCollection(collection);
+
+  //     expect(collectionsControllerWithMockApi.api.send).toHaveBeenCalledWith('import-collection', collection);
+
+  //     expect(collectionsControllerWithMockApi.api.receive).toHaveBeenCalledWith('add-collections', expect.any(Function));
+
+  //     expect(appDispatch).toHaveBeenCalledWith(collectionsReplaced([collection]));
+
+  //     expect(result).toBe('okie dokie');
+  //   });
+  // });
 });

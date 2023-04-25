@@ -1,19 +1,23 @@
-import store, { appDispatch } from '../..src/client/toolkit-refactor/store';
-import { responseDataSaved, reqResUpdated } from '../..src/client/toolkit-refactor/reqRes/reqResSlice';
+import store, { appDispatch } from '../../src/client/toolkit-refactor/store';
+import { responseDataSaved, reqResUpdated } from '../../src/client/toolkit-refactor/reqRes/reqResSlice';
 // import { ReqRes } from '../../types';
-import { LoadTestController } from './LoadTestController';
+import { LoadTestController } from '../../src/client/controllers/LoadTestController';
 // import { LoadTestResult } from '../components/main/new-request/stressTest/LoadTest';
-import { graphUpdated } from '../toolkit-refactor/slices/graphPointsSlice';
+import { graphUpdated } from '../../src/client/toolkit-refactor/slices/graphPointsSlice';
 
+// mock the store
 jest.mock('../../src/client/toolkit-refactor/store');
 
+
 describe('LoadTestController', () => {
+  // make sure to clear the mock before each test
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   describe('processLoadTestResults', () => {
     it('updates the corresponding request-response object and dispatches the necessary actions to update the store and associated UI components', () => {
+      // hardcode a resReqArray
       const reqResArray = [
         {
           id: '1',
@@ -35,6 +39,7 @@ describe('LoadTestController', () => {
           totalTime: 1000,
         },
       ];
+      // hardCode a result object
       const results = {
         label: 'test label',
         errorCount: 0,
@@ -46,6 +51,7 @@ describe('LoadTestController', () => {
         latency99thPercentile: 70,
       };
 
+      
       store.getState.mockReturnValue({
         reqRes: { reqResArray },
       });
