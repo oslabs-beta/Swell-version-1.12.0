@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux';
 
 import connectionController from '../../controllers/reqResController';
 import testSDPConnection from '../../controllers/webrtcPeerController';
-import RestRequestContent from '../../components/legacy-components/display/RestRequestContent';
-import GraphQLRequestContent from '../../components/legacy-components/display/GraphQLRequestContent';
-import WebRTCRequestContent from '../../components/legacy-components/display/WebRTCRequestContent';
-import GRPCRequestContent from '../../components/legacy-components/display/GRPCRequestContent';
-import OpenAPIRequestContent from '../../components/legacy-components/display/OpenAPIRequestContent';
+// import RestRequestContent from '../../components/legacy-components/display/RestRequestContent';
+// import GraphQLRequestContent from '../../components/legacy-components/display/GraphQLRequestContent';
+// import WebRTCRequestContent from '../../components/legacy-components/display/WebRTCRequestContent';
+// import GRPCRequestContent from '../../components/legacy-components/display/GRPCRequestContent';
+// import OpenAPIRequestContent from '../../components/legacy-components/display/OpenAPIRequestContent';
 
 import { responseDataSaved } from './reqResSlice';
 import { fieldsReplaced } from '../slices/newRequestFieldsSlice';
@@ -26,7 +26,7 @@ import {
 } from '../slices/uiSlice';
 
 import { useAppDispatch } from '../store';
-
+console.log('test')
 const SingleReqResContainer = (props) => {
   const [showDetails, setShowDetails] = useState(false);
   const dispatch = useAppDispatch();

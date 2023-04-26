@@ -1,3 +1,36 @@
+import React, { useEffect, useState} from 'react';
+import ContentReqRowComposer from './ContentReqRowComposer.tsx';
+
+
+// type HeaderEntryFormProps = {
+//   newRequestHeaders: {
+//     headersArr: {
+//       id: number,
+//       active: boolean,
+//       key: string,
+//       value: string,
+//     }[],
+//   },
+//   newRequestFields: {
+//     method: string,
+//   },
+//   newRequestBody: {
+//     bodyType: string,
+//     rawType: string,
+//   },
+//   newRequestBodySet: (body: { bodyType: string, rawType: string }) => void,
+//   newRequestHeadersSet: (headers: {
+//     headersArr: {
+//       id: number,
+//       active: boolean,
+//       key: string,
+//       value: string,
+//     }[],
+//     count: number,
+//     override?: boolean,
+//   }) => void,
+// }
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ContentReqRowComposer from '../new-request/ContentReqRowComposer';
+import ContentReqRowComposer from '../new-request/ContentReqRowComposer.tsx';
 
 export default function OpenAPIServerForm({
   newRequestsOpenAPI,
