@@ -25,10 +25,19 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./main_process/*.ts",
-    "src/assets/**/*.ts"
-, "src/client/toolkit-refactor/reqRes/SingleReqResContainer.jsx", "src/client/components/main/new-request/ContentReqRowComposer.tsx"  ],
-
-  "exclude": ["node_modules", "dist", "build", "coverage", "mocks"],
-  "typeRoots": ["./node_modules/@types"]
+    "src/assets/**/*.ts",
+    "src/client/toolkit-refactor/reqRes/SingleReqResContainer.jsx",
+    "src/client/components/main/new-request/ContentReqRowComposer.tsx",
+    "src/client/components/main/new-request/HeaderEntryForm.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "mocks"
+  ],
+  "typeRoots": [
+    "./node_modules/@types"
+  ]
 }
-
