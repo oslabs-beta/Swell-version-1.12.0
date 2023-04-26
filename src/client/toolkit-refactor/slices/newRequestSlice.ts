@@ -115,7 +115,7 @@ const newRequestSlice = createSlice({
       const composeNewRequestStore = (bodyType: string): NewRequestStore => {
         return {
           ...initialState,
-          newRequestBody: {
+          newRequestBody: {x
             ...initialState.newRequestBody,
             bodyType: bodyType,
             bodyVariables: '',
@@ -148,15 +148,18 @@ const newRequestSlice = createSlice({
             newRequestBody: {
               ...initialState.newRequestBody,
               bodyType: 'stun-ice',
-              bodyContent: {
-                iceConfiguration: {
-                  iceServers: [
-                    {
-                      urls: 'stun:stun1.l.google.com:19302',
-                    },
-                  ],
-                },
-              },
+              // Note that webrtc is an experimental feature not built out.
+              //'bodyContent' does not match the 'string' type in types.ts. Commenting out for now; will
+              //need to look into refactoring code with 'bodyContent' type, or modularize the code more.
+              // bodyContent: {
+              //   iceConfiguration: {
+              //     iceServers: [
+              //       {
+              //         urls: 'stun:stun1.l.google.com:19302',
+              //       },
+              //     ],
+              //   },
+              // },
             },
           };
         }
