@@ -107,10 +107,7 @@ function MainContainer(props: $TSFixMeObject) {
             <Route path="/" element={<Http2Composer {...props} />} />
             <Route path="/graphql" element={<GraphQLComposer {...props} />} />
             <Route path="/grpc" element={<GRPCComposer {...props} />} />
-            <Route
-              path="/websocket"
-              element={<WebSocketComposer {...props} />}
-            />
+            <Route path="/websocket" element={<WebSocketComposer {...props} />} />
             <Route path="/webrtc" element={<WebRTCComposer {...props} />} />
             <Route path="/openapi" element={<OpenAPIComposer {...props} />} />
             <Route path="/webhook" element={<WebhookComposer {...props} />} />
