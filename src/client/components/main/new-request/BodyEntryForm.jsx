@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import WWWForm from './WWWForm.jsx';
+import WWWForm from './WWWForm';
 import BodyTypeSelect from './BodyTypeSelect.jsx';
 import JSONTextArea from './JSONTextArea.jsx';
 import RawBodyTypeSelect from './RawBodyTypeSelect.jsx';
