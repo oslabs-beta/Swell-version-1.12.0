@@ -26,7 +26,7 @@
     "./src/**/*.tsx",
     "./main_process/*.ts",
     "src/assets/**/*.ts"
-  ],
+, "src/client/toolkit-refactor/reqRes/SingleReqResContainer.jsx", "src/client/components/main/new-request/ContentReqRowComposer.tsx"  ],
 
   "exclude": ["node_modules", "dist", "build", "coverage", "mocks"],
   "typeRoots": ["./node_modules/@types"]

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 /** @todo Remove propTypes check when component is converted to TypeScript*/
 import PropTypes from 'prop-types';
-import ContentReqRowComposer from './ContentReqRowComposer.jsx';
+import ContentReqRowComposer from './ContentReqRowComposer.tsx';
 
 class WWWForm extends Component {
   constructor(props) {
