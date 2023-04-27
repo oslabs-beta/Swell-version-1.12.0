@@ -11,7 +11,7 @@ import historyController from '../../../controllers/historyController';
 import GRPCTypeAndEndpointEntryForm from './GRPCTypeAndEndpointEntryForm.jsx';
 import HeaderEntryForm from '../new-request/HeaderEntryForm';
 import GRPCProtoEntryForm from './GRPCProtoEntryForm.jsx';
-import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import NewRequestButton from '../new-request/NewRequestButton';
 import TestEntryForm from '../new-request/TestEntryForm';
 
 // Import MUI components
