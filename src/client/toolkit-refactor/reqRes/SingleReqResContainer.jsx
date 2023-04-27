@@ -7,7 +7,7 @@ import connectionController from '../../controllers/reqResController';
 import testSDPConnection from '../../controllers/webrtcPeerController';
 // import RestRequestContent from '../../components/legacy-components/display/RestRequestContent';
 // import GraphQLRequestContent from '../../components/legacy-components/display/GraphQLRequestContent';
-// import WebRTCRequestContent from '../../components/legacy-components/display/WebRTCRequestContent';
+import WebRTCRequestContent from '../../components/legacy-components/display/WebRTCRequestContent';
 // import GRPCRequestContent from '../../components/legacy-components/display/GRPCRequestContent';
 // import OpenAPIRequestContent from '../../components/legacy-components/display/OpenAPIRequestContent';
 

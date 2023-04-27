@@ -77,7 +77,6 @@ const connectionController = {
       api.send('open-grpc', reqResObj);
       // Standard HTTP?
       // TODO (look for TODO tree)
-      // check streams here /////////////////////////////////////////////////////////////// (note for Billy)
     } else if (reqResObj.openapi) {
       console.log('got an open api request to fill');
       //console.log(reqResObj);
