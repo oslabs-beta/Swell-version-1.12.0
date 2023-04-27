@@ -28,7 +28,10 @@ const WebRTCServerEntryForm: React.FC<Props> = ({ warningMessage }) => {
       /**
        * @todo This code randomly causes parts of the app to crash. As in, it
        * will randomly decide to start or stop working without you changing
-       * anything. Need to investigate
+       * anything. Need to investigate 
+       * 
+       * (OR needs to be re-built....
+       *          - another iteration group)
        */
       setValue(
         jBeautify(JSON.stringify(bodyContent?.iceConfiguration?.iceServers))
@@ -61,11 +64,6 @@ const WebRTCServerEntryForm: React.FC<Props> = ({ warningMessage }) => {
 
 export default WebRTCServerEntryForm;
 
-
-
-
-
-// const jBeautify = require('js-beautify').js;
 
 // const WebRTCServerEntryForm = (props) => {
 //   const { warningMessage } = props;
