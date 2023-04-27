@@ -9,14 +9,14 @@ import historyController from '../../../controllers/historyController';
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import HeaderEntryForm from '../new-request/HeaderEntryForm.jsx';
-import GraphQLMethodAndEndpointEntryForm from './GraphQLMethodAndEndpointEntryForm.jsx';
-import CookieEntryForm from '../new-request/CookieEntryForm.jsx';
-import GraphQLBodyEntryForm from './GraphQLBodyEntryForm.jsx';
+import HeaderEntryForm from '../new-request/HeaderEntryForm';
+import GraphQLMethodAndEndpointEntryForm from './GraphQLMethodAndEndpointEntryForm';
+import CookieEntryForm from '../new-request/CookieEntryForm';
+import GraphQLBodyEntryForm from './GraphQLBodyEntryForm';
 import GraphQLVariableEntryForm from './GraphQLVariableEntryForm';
-import GraphQLIntrospectionLog from './GraphQLIntrospectionLog.jsx';
-import NewRequestButton from '../new-request/NewRequestButton.jsx';
-import TestEntryForm from '../new-request/TestEntryForm.jsx';
+import GraphQLIntrospectionLog from './GraphQLIntrospectionLog';
+import NewRequestButton from '../new-request/NewRequestButton';
+import TestEntryForm from '../new-request/TestEntryForm';
 import TestContainer from '../new-request/stressTest/TestContainer';
 
 // Import MUI components

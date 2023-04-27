@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ReqRes, $TSFixMe, $TSFixMeObject } from '../../../types';
 
 import * as ReqResSlice from '../../toolkit-refactor/reqRes/reqResSlice';
+
 import {
   composerFieldsReset,
   newRequestSSESet,
@@ -12,7 +13,9 @@ import {
   newRequestBodySet,
   newRequestHeadersSet,
 } from '../../toolkit-refactor/slices/newRequestSlice';
+
 import { openApiRequestsReplaced } from '../../toolkit-refactor/slices/newRequestOpenApiSlice';
+
 import {
   setWorkspaceActiveTab,
   /*, setComposerDisplay */
@@ -39,6 +42,7 @@ import ResponsePaneContainer from './response/ResponsePaneContainer';
 import { Box } from '@mui/material';
 import { AppDispatch, RootState } from '../../toolkit-refactor/store';
 import Split from 'react-split';
+
 /**@todo switch to hooks? */
 const mapStateToProps = (store: RootState) => {
   return {
@@ -107,10 +111,7 @@ function MainContainer(props: $TSFixMeObject) {
             <Route path="/" element={<Http2Composer {...props} />} />
             <Route path="/graphql" element={<GraphQLComposer {...props} />} />
             <Route path="/grpc" element={<GRPCComposer {...props} />} />
-            <Route
-              path="/websocket"
-              element={<WebSocketComposer {...props} />}
-            />
+            <Route path="/websocket" element={<WebSocketComposer {...props} />} />
             <Route path="/webrtc" element={<WebRTCComposer {...props} />} />
             <Route path="/openapi" element={<OpenAPIComposer {...props} />} />
             <Route path="/webhook" element={<WebhookComposer {...props} />} />
@@ -128,3 +129,4 @@ function MainContainer(props: $TSFixMeObject) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+
