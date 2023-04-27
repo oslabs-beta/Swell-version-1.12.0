@@ -147,6 +147,7 @@ const newRequestOpenApiSlice = createSlice({
         (entry) => entry.request.id === id
       );
 
+
       const latestRequest = filteredById.pop();
       if (!latestRequest) {
         return;

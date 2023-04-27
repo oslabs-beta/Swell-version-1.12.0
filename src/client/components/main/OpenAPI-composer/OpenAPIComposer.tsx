@@ -8,7 +8,7 @@ import historyController from '../../../controllers/historyController';
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import NewRequestButton from '../new-request/NewRequestButton.jsx';
+import NewRequestButton from '../new-request/NewRequestButton';
 import OpenAPIEntryForm from './OpenAPIEntryForm';
 import OpenAPIDocumentEntryForm from './OpenAPIDocumentEntryForm.jsx';
 import OpenAPIMetadata from './OpenAPIMetadata.jsx';
