@@ -6,14 +6,15 @@ on:
   workflow_dispatch:
   push:
     branches: [ ci-feature ]
-    paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
+    # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
   pull_request:
     branches: [ ci-draft ]
-    paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
+    # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
 
 jobs:
   analyze:
     name: Analyze code
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -22,12 +23,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
         language: [ 'javascript', 'typescript' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
         # Learn more:
         # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
-    runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
