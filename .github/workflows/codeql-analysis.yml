@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ ci-feature, ci-draft, dev, main ]
-    # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
+    paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**' ]
   pull_request:
     branches: [ dev, main ]
-    # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
+    paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**' ]
 
 jobs:
   analyze:
