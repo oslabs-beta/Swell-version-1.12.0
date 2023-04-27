@@ -3,6 +3,7 @@
 name: "Code scanning"
 
 on:
+  workflow_dispatch:
   push:
     branches: [ ci-feature ]
     paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
