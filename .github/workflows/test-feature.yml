@@ -5,10 +5,10 @@ name: "Code scanning"
 on:
   workflow_dispatch:
   push:
-    branches: [ ci-feature ]
+    branches: [ ci-feature, ci-draft ]
     # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
   pull_request:
-    branches: [ ci-draft ]
+    branches: [ dev, main ]
     # paths: [ test/**, src/**, menu/**, main_process/**, build/** ]
 
 jobs:
