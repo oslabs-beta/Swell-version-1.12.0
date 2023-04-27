@@ -6,8 +6,7 @@
  */
 
 import newRequestReducer, 
-{ initialState, 
-    newRequestHeadersSet,
+{ newRequestHeadersSet,
     newRequestBodySet,
     newRequestStreamsSet,
     newRequestCookiesSet,
@@ -243,7 +242,6 @@ describe('newRequestSlice', () => {
         },
       };
 
-      //Testing request slice as 
       let result = newRequestReducer(initialState, newRequestContentByProtocol('tRPC'));
       expect(result).toEqual(expected);
 
@@ -253,6 +251,10 @@ describe('newRequestSlice', () => {
 
       expected.newRequestBody.bodyType = 'GRPC';
       result = newRequestReducer(initialState, newRequestContentByProtocol('grpc'));
+      expect(result).toEqual(expected);
+
+      expected.newRequestBody.bodyType = 'stun-ice';
+      result = newRequestReducer(initialState, newRequestContentByProtocol('webrtc'));
       expect(result).toEqual(expected);
     });
   });
