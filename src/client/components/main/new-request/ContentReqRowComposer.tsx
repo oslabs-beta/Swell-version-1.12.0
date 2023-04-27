@@ -16,7 +16,7 @@ interface Props {
   };
   changeHandler: (id: string, field: 'active' | 'key' | 'value', value: boolean | string | number) => any;
   index: number;
-  deleteItem: (index: number) => void;
+  deleteItem: (index: number) => any;
   type: string;
 }
 
