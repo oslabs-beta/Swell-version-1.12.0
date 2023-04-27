@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ ci-feature, ci-draft, dev, main ]
-    paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**', '.github/workflows/**', 'webpack**' ]
+    # paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**', '.github/workflows/**', 'webpack**' ]
   pull_request:
     branches: [ dev, main ]
-    paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**', '.github/workflows/**', 'webpack**' ]
+    # paths: [ 'test/**', 'src/**', 'menu/**', 'main_process/**', 'build/**', '.github/workflows/**', 'webpack**' ]
 
 jobs:
   analyze:
