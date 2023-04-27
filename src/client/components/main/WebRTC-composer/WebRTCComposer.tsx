@@ -8,8 +8,8 @@ import historyController from '../../../controllers/historyController';
  * @todo Refactor all of the below components to use MUI, place them in a new
  * "components" folder
  */
-import WebRTCSessionEntryForm from './WebRTCSessionEntryForm.jsx';
-import WebRTCServerEntryForm from './WebRTCServerEntryForm.jsx';
+import WebRTCSessionEntryForm from './WebRTCSessionEntryForm';
+import WebRTCServerEntryForm from './WebRTCServerEntryForm';
 import NewRequestButton from '../new-request/NewRequestButton';
 import TestEntryForm from '../new-request/TestEntryForm';
 // Import MUI components
